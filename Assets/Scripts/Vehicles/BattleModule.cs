@@ -28,10 +28,10 @@ public class BattleModule : MonoBehaviour
     void FixedUpdate()
     {
         RaycastHit[] hits;
-        Vector3 localForward = this.transform.forward;
+        Vector3 localForward = rayPoint.transform.forward;
         //localForward += Vector3.up;
 
-        Debug.DrawRay(transform.position, localForward, Color.blue, rayDist);
+        Debug.DrawRay(rayPoint.transform.position, localForward, Color.blue, rayDist);
         //Physics.Raycast(transform.position, localForward, rayDist, LayerMask.GetMask("Obstacle"));
         //if (Physics.Raycast(transform.position, localForward, out hit, rayDist, rayingLayer))//LayerMask.GetMask("Player")))
         hits = Physics.RaycastAll(transform.position, localForward, rayDist, rayingLayer);

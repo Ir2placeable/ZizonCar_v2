@@ -30,29 +30,35 @@ public class GameManager : MonoBehaviour {
     }
 
     public int winCondition = 0;
+
+    [SerializeField]
+    private int _p1WinCount = 0;
     public int p1WinCount
     {
         get
         {
-            return p1WinCount;
+            return _p1WinCount;
         }
         set
         {
-            p1WinCount += value;
+            _p1WinCount += value;
             currentPhase = GamePhase.BattleEnd;
             //if (p1WinCount == winCondition)
             // gameSet
         }
     }
+
+    [SerializeField]
+    private int _p2WinCount = 0;
     public int p2WinCount
     {
         get
         {
-            return p2WinCount;
+            return _p2WinCount;
         }
         set
         {
-            p2WinCount += value;
+            _p2WinCount += value;
             currentPhase = GamePhase.BattleEnd;
             //if (p1WinCount == winCoundtion)
             // gameSet
