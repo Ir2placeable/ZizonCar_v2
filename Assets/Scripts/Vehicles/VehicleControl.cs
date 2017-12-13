@@ -5,8 +5,7 @@ using UnityEngine;
 public class VehicleControl : MonoBehaviour {
 
     public GameObject vehicleFront = null;
-    public int vehicle1Number;
-    public int vehicle2Number;
+    public int vehicleID = -1;
 
     // Use this for initialization
     void Start ()

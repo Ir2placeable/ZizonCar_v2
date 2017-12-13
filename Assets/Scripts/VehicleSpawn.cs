@@ -30,7 +30,8 @@ public class VehicleSpawn : MonoBehaviour {
     {
         for (int i = 0; i < 2; i++)
         {
-            GameObject spawnedVehicle = CreateVehicle(i);
+            VehicleControl spawnedVehicle = CreateVehicle(i).GetComponent<VehicleControl>();
+            spawnedVehicle.vehicleID = i;
         }
             
     }

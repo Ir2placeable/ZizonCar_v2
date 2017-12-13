@@ -45,6 +45,7 @@ public class BattleModule : MonoBehaviour
                     if (!hit.collider.gameObject.Equals(vehicleControl.gameObject))
                     {
                         Debug.Log("추돌!");
+                        
                     }
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("VehicleFront"))
