@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour {
         {
             case GamePhase.BeforeStarting:
                 vehicleSpawn.Spawn();
+                currentPhase = GamePhase.Countdown;
                 break;
 
             case GamePhase.Countdown:
@@ -111,6 +112,13 @@ public class GameManager : MonoBehaviour {
                 if ((p1WinCount >= winCondition) || (p2WinCount >= winCondition))
                 {
                     currentPhase = GamePhase.GameEnd;
+                }
+                else
+                {
+                    vehicleSpawn.DeleteAll();
+                    vehicleSpawn.Spawn();
+
+                    currentPhase = GamePhase.Countdown;
                 }
             
                 break;

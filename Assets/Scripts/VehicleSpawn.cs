@@ -7,12 +7,16 @@ public class VehicleSpawn : MonoBehaviour {
     public GameObject[] vehiclePrefab = null;
     public GameObject[] spawnZone = null;
 
+    public GameObject[] spawnedVehicles = null;
+
     public GameObject playZone = null;
 
 	// Use this for initialization
 	void Start () {
         if (playZone == null)
             playZone = GameObject.Find("PlayZone");
+
+        spawnedVehicles = new GameObject[vehiclePrefab.Length];
 	}
 	
 	// Update is called once per frame
@@ -38,7 +42,17 @@ public class VehicleSpawn : MonoBehaviour {
 
             // Link to camera
             followerCams[i].followingTarget = spawnedVehicle.transform;
+
+            spawnedVehicles[i] = spawnedVehicle.gameObject;
         }
             
+    }
+
+    public void DeleteAll()
+    {
+        foreach (GameObject vehicle in spawnedVehicles)
+        {
+            Destroy(vehicle);
+        }
     }
 }
