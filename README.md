@@ -1,1 +1,2 @@
-# ZizonCars_V2
+# ZizonCars
+Zizon team's game project
