@@ -6,13 +6,29 @@ public class GameManager : MonoBehaviour {
     public int winCondition = 0;
     public int p1WinCount
     {
-        get;
-        set;
+        get
+        {
+            return p1WinCount;
+        }
+        set
+        {
+            p1WinCount += value;
+            //if (p1WinCount == winCondition)
+                // gameSet
+        }
     }
     public int p2WinCount
     {
-        get;
-        set;
+        get
+        {
+            return p2WinCount;
+        }
+        set
+        {
+            p2WinCount += value;
+            //if (p1WinCount == winCoundtion)
+                   // gameSet
+        }
     }
 
     // Use this for initialization
