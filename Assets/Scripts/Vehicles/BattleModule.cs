@@ -11,6 +11,8 @@ public class BattleModule : MonoBehaviour
     public LayerMask rayingLayer;
     public float rayDist = 1;
 
+    public GameObject rayPoint = null;
+
     // Use this for initialization
     void Start()
     {
@@ -27,6 +29,7 @@ public class BattleModule : MonoBehaviour
     {
         RaycastHit[] hits;
         Vector3 localForward = this.transform.forward;
+        //localForward += Vector3.up;
 
         Debug.DrawRay(transform.position, localForward, Color.blue, rayDist);
         //Physics.Raycast(transform.position, localForward, rayDist, LayerMask.GetMask("Obstacle"));
