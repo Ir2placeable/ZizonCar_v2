@@ -46,6 +46,14 @@ public class BattleModule : MonoBehaviour
                     {
                         Debug.Log("추돌!");
                         
+                        if(vehicleControl.vehicleID == 0) // 첫번째 차
+                        {
+                            GameManager.Instance().p1WinCount = 1;
+                        }
+                        else
+                        {
+                            GameManager.Instance().p2WinCount = 1;
+                        }
                     }
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("VehicleFront"))

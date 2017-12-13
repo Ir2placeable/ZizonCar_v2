@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour {
         set
         {
             p1WinCount += value;
+            currentPhase = GamePhase.BattleEnd;
             //if (p1WinCount == winCondition)
-                // gameSet
+            // gameSet
         }
     }
     public int p2WinCount
@@ -52,8 +53,9 @@ public class GameManager : MonoBehaviour {
         set
         {
             p2WinCount += value;
+            currentPhase = GamePhase.BattleEnd;
             //if (p1WinCount == winCoundtion)
-                   // gameSet
+            // gameSet
         }
     }
 
@@ -99,15 +101,22 @@ public class GameManager : MonoBehaviour {
                 break;
 
             case GamePhase.Countdown:
+                currentPhase = GamePhase.BattleStart;
                 break;
 
             case GamePhase.BattleStart:
                 break;
 
             case GamePhase.BattleEnd:
+                if ((p1WinCount >= winCondition) || (p2WinCount >= winCondition))
+                {
+                    currentPhase = GamePhase.GameEnd;
+                }
+            
                 break;
 
             case GamePhase.GameEnd:
+                Debug.Log("Battle Ended");
                 break;
 
         }
