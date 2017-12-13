@@ -7,16 +7,17 @@ public class VehicleSpawn : MonoBehaviour {
     public GameObject[] vehiclePrefab = null;
     public GameObject[] spawnZone = null;
 
-    private GameObject playZone = null;
+    public GameObject playZone = null;
 
 	// Use this for initialization
 	void Start () {
-        playZone = GameObject.Find("PlayZone");
+        if (playZone == null)
+            playZone = GameObject.Find("PlayZone");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+	    
 	}
 
     private GameObject CreateVehicle(int vehicleIndex)
@@ -28,10 +29,15 @@ public class VehicleSpawn : MonoBehaviour {
 
     public void Spawn()
     {
+        FollowerCam[] followerCams = GameObject.FindObjectsOfType<FollowerCam>();
+
         for (int i = 0; i < 2; i++)
         {
             VehicleControl spawnedVehicle = CreateVehicle(i).GetComponent<VehicleControl>();
             spawnedVehicle.vehicleID = i;
+
+            // Link to camera
+            followerCams[i].followingTarget = spawnedVehicle.transform;
         }
             
     }

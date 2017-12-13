@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum GamePhase
+{
+    None,
+    BeforeStarting,
+    Countdown,
+    BattleStart,
+    BattleEnd,
+    GameEnd
+};
+
 public class GameManager : MonoBehaviour {
     private static GameManager m_Instance = null;
 
@@ -47,13 +57,59 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    GamePhase _currentPhase = GamePhase.None;
+    GamePhase currentPhase
+    {
+        set
+        {
+            if (_currentPhase != value)
+            {
+                GamePhaseChanged(value);
+                _currentPhase = value;
+            }
+        }
+
+        get
+        {
+            return _currentPhase;
+        }
+    }
+
+    public VehicleSpawn vehicleSpawn = null;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        if (vehicleSpawn == null)
+            vehicleSpawn = GameObject.FindObjectOfType<VehicleSpawn>();
+
+        currentPhase = GamePhase.BeforeStarting;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void GamePhaseChanged(GamePhase nextPhase)
+    {
+        switch (nextPhase)
+        {
+            case GamePhase.BeforeStarting:
+                vehicleSpawn.Spawn();
+                break;
+
+            case GamePhase.Countdown:
+                break;
+
+            case GamePhase.BattleStart:
+                break;
+
+            case GamePhase.BattleEnd:
+                break;
+
+            case GamePhase.GameEnd:
+                break;
+
+        }
+    }
 }
