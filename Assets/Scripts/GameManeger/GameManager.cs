@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    [SerializeField]
     GamePhase _currentPhase = GamePhase.None;
     GamePhase currentPhase
     {
@@ -115,12 +116,16 @@ public class GameManager : MonoBehaviour {
                 break;
 
             case GamePhase.BattleEnd:
+                Debug.Log("BattleEnd");
+
                 if ((p1WinCount >= winCondition) || (p2WinCount >= winCondition))
                 {
                     currentPhase = GamePhase.GameEnd;
+                    Debug.Log("GameEnd");
                 }
                 else
                 {
+                    Debug.Log("Reset");
                     vehicleSpawn.DeleteAll();
                     vehicleSpawn.Spawn();
 

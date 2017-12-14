@@ -89,7 +89,7 @@ public class DrivingModule : MonoBehaviour {
         {
             vehicleRigidbody.AddRelativeForce(Vector3.forward * accerationForce * forceUnit);
             //Debug.Log(vehicleRigidbody.velocity.magnitude);
-            Debug.Log("NOW speeed : " + vehicleRigidbody.velocity.magnitude);
+            //Debug.Log("NOW speeed : " + vehicleRigidbody.velocity.magnitude);
         }
         else if(vehicleRigidbody.velocity.magnitude > maxSpeed) // speed down
         {

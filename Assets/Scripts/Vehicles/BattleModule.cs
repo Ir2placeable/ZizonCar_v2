@@ -43,13 +43,21 @@ public class BattleModule : MonoBehaviour
                 //Debug.Log(LayerMask. hit.collider.gameObject.layer);
 
                 // 발사한 레이가 차량 자기 자신의 콜리더에 맞으면 안되기에 처리.
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Players"))
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("VehicleFront"))
+                {
+                    if (!hit.collider.gameObject.Equals(vehicleControl.vehicleFront))
+                    {
+                        Debug.Log("정면추돌!");
+                        break;
+                    }
+                }
+                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Players"))
                 {
                     if (!hit.collider.gameObject.Equals(vehicleControl.gameObject))
                     {
                         Debug.Log("추돌!");
-                        
-                        if(vehicleControl.vehicleID == 0) // 첫번째 차
+
+                        if (vehicleControl.vehicleID == 0) // 첫번째 차
                         {
                             GameManager.Instance().p1WinCount = 1;
                         }
@@ -59,17 +67,10 @@ public class BattleModule : MonoBehaviour
                         }
                     }
                 }
-                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("VehicleFront"))
-                {
-                    if (!hit.collider.gameObject.Equals(vehicleControl.vehicleFront))
-                    {
-                        Debug.Log("정면추돌!");
-                    }
-                }
             } 
         }
 
-        Debug.DrawRay(transform.position, localForward * rayDist, Color.blue, 3f);
+        //Debug.DrawRay(transform.position, localForward * rayDist, Color.blue, 3f);
         //Physics.Raycast(transform.position, localForward, out hit, 100, 0);
     }
 
