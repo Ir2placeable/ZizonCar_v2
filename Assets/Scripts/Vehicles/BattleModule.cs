@@ -22,7 +22,22 @@ public class BattleModule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
+        if (vehicleControl.vehicleID == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameObject.GetComponent<SkillSystemRoot>().UseSkill();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                gameObject.GetComponent<SkillSystemRoot>().UseSkill();
+            }
+        }
     }
 
     void FixedUpdate()

@@ -73,8 +73,9 @@ public class GameManager : MonoBehaviour {
         {
             if (_currentPhase != value)
             {
-                GamePhaseChanged(value);
                 _currentPhase = value;
+                GamePhaseChanged(value);
+                
             }
         }
 
@@ -101,6 +102,15 @@ public class GameManager : MonoBehaviour {
 
     void GamePhaseChanged(GamePhase nextPhase)
     {
+        //if (nextPhase == GamePhase.BeforeStarting)
+        //{
+
+        //}
+        //else if (nextPhase == GamePhase.Countdown)
+        //{
+
+        //}
+
         switch (nextPhase)
         {
             case GamePhase.BeforeStarting:

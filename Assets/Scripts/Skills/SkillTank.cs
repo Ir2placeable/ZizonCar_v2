@@ -26,13 +26,14 @@ public class SkillTank : SkillSystemRoot
 
         // Todo : 스킬에 추가하고싶은 내용 추가. 
         
-        if(Input.GetKey(KeyCode.Space))
-        {
+        //if(Input.GetKey(KeyCode.Space))
+        //{
+            Debug.Log("skill");
             GameObject createdObj = Instantiate(tankBullet);
             createdObj.transform.parent = gameObject.transform.parent;
             createdObj.transform.position = startBullet.transform.position;
             createdObj.transform.rotation = startBullet.transform.rotation;
-        }
+        //}
         /* 해당 주석의 내용은 보기 불편할 시 바로 삭제할 것.
          * 
          * skillUserInfo 필드를 이용해 스킬을 실행시킬 주체의 gameObject를 가지고 올 수 있음.

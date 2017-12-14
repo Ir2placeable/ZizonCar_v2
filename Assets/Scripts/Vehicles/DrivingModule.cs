@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class DrivingModule : MonoBehaviour {
 
+    private VehicleControl vehicleControl = null;
     private Rigidbody vehicleRigidbody = null;
 
     public float accerationForce = 0.0f;
@@ -51,6 +52,9 @@ public class DrivingModule : MonoBehaviour {
     {
         if (vehicleRigidbody == null)
             vehicleRigidbody = gameObject.GetComponent<Rigidbody>();
+
+        if (vehicleControl == null)
+            vehicleControl = gameObject.GetComponent<VehicleControl>();
     }
 
     // Update is called once per frame
@@ -64,14 +68,27 @@ public class DrivingModule : MonoBehaviour {
     {
         Vector3 currentRotation = transform.localRotation.eulerAngles;
 
-        if (turnLeft || Input.GetKey(KeyCode.LeftArrow))
+        if (vehicleControl.vehicleID == 0)
+        {
+            turnLeft = Input.GetKey(KeyCode.LeftArrow);
+            turnRight = Input.GetKey(KeyCode.RightArrow);
+            useBreak = Input.GetKey(KeyCode.S);
+        }
+        else
+        {
+            turnLeft = Input.GetKey(KeyCode.A);
+            turnRight = Input.GetKey(KeyCode.D);
+            useBreak = Input.GetKey(KeyCode.S);
+        }
+
+        if (turnLeft) //|| Input.GetKey(KeyCode.LeftArrow))
         {
             currentRotation.y -= (rotationRatio * Time.deltaTime);
             //vehicleRigidbody.AddRelativeForce(Vector3.left * vehicleRigidbody.velocity.magnitude / 6 * forceUnit);
             if (vehicleRigidbody.velocity.magnitude > minSpeed)
                 vehicleRigidbody.AddRelativeForce(Vector3.back * deAccerationForce * forceUnit);
         }
-        if (turnRight || Input.GetKey(KeyCode.RightArrow))
+        if (turnRight)// || Input.GetKey(KeyCode.RightArrow))
         {
             currentRotation.y += (rotationRatio * Time.deltaTime);
             //vehicleRigidbody.AddRelativeForce(Vector3.right * accerationForce/6 * forceUnit);
@@ -80,7 +97,7 @@ public class DrivingModule : MonoBehaviour {
         }
         transform.localRotation = Quaternion.Euler(currentRotation);
 
-        if (useBreak || Input.GetKey(KeyCode.Space)) // break
+        if (useBreak) //|| Input.GetKey(KeyCode.Space)) // break
         {
             vehicleRigidbody.AddRelativeForce(Vector3.back * deAccerationForce * 17/10 * forceUnit);
         }

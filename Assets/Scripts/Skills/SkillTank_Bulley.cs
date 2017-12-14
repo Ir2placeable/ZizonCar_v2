@@ -9,6 +9,8 @@ public class SkillTank_Bulley : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        vehicleRigidbody = gameObject.GetComponent<Rigidbody>();
+
         vehicleRigidbody.AddForce(Vector3.forward * bulletSpeed);
 	}
 	
