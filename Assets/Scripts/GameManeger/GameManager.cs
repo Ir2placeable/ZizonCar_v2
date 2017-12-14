@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public VehicleSpawn vehicleSpawn = null;
+    public GameObject[] spawnedVehicles = null;
 
     // Use this for initialization
     void Start () {
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour {
         {
             case GamePhase.BeforeStarting:
                 vehicleSpawn.Spawn();
+                
                 currentPhase = GamePhase.Countdown;
                 break;
 
