@@ -22,8 +22,6 @@ public class BattleModule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (vehicleControl.vehicleID == 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))

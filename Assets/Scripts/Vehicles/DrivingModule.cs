@@ -72,7 +72,7 @@ public class DrivingModule : MonoBehaviour {
         {
             turnLeft = Input.GetKey(KeyCode.LeftArrow);
             turnRight = Input.GetKey(KeyCode.RightArrow);
-            useBreak = Input.GetKey(KeyCode.S);
+            useBreak = Input.GetKey(KeyCode.DownArrow);
         }
         else
         {
